@@ -1,0 +1,9 @@
+/* adapted from https://github.com/ciceronianus/roam-customization/blob/main/CSS/Roam-colored_fonts_alternative.css */
+
+[data-tag^="c_"] {
+    	display:none !important;  
+}
+
+[data-tag^="c_green"] + .rm-highlight {
+	background-color: #4CAF50 !important;
+}
