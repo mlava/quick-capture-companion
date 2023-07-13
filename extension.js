@@ -2,7 +2,7 @@ let string1 = "Thank you for installing the companion extension for the Capture 
 let string2 = "This page has been automatically generated to allow authentication with the app.";
 let string3 = "If you have not already installed the mobile app, you can find it at:";
 let string4 = "[Google Play](https://play.google.com/store/apps/details?id=com.lavercombe.quickCaptureRoamResearch)";
-let string5 = "App Store - in review";
+let string5 = "[App Store](https://apps.apple.com/app/id6450912541?platform=iphone)";
 let string6 = "**Configuration:**";
 let string7 = "Tag to apply to notes:";
 let string8 = "capture";
