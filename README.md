@@ -7,3 +7,5 @@ These applications can be installed via:
 This companion extension will allow for configuration of the options for the Capture mobile application, although these options are not yet available. I have been focused on getting the applications developed and released, and further configuration options will become available in time.
 
 The extension will also allow me to receive funding from the Roam Depot developer payments to cover development costs, Play/App store developer accounts, and ensure the apps can be listed as free in the Android and iOS App stores.
+
+Note that the mobile app can't send notes to an encrypted graph, as Roam Research doesn't provide API tokens for encrypted graphs.
