@@ -6,6 +6,8 @@ let string5 = "[App Store](https://apps.apple.com/app/id6450912541?platform=ipho
 let string6 = "**Configuration:**";
 let string7 = "Tag to apply to notes:";
 let string8 = "capture";
+let string9 = "Show Markdown toolbar for text notes: (true|false)";
+let string10 = "true";
 
 export default {
     onload: ({ extensionAPI }) => {
@@ -30,6 +32,8 @@ async function checkFirstRun() {
         let config = await createBlock(string6, newUid, 4);
         let tag = await createBlock(string7, config, 0);
         await createBlock(string8, tag, 0);
+        let md = await createBlock(string9, config, 1);
+        await createBlock(string10, md, 0);
         await createBlock("---", newUid, 5);
         let ws_1 = "Authentication key:";
         let headerUID = await createBlock(ws_1, newUid, 6);
@@ -52,15 +56,25 @@ async function checkFirstRun() {
         
         if (configUID != undefined) {
             if (config != undefined && config.length > 0) { // check config for re-ordering and find config to update if not present
-                var matched = false;
+                var tagMatched = false;
                 for (var i = 0; i < config.length; i++) {
                     if (config[i].string == string7) { // find tag in config if present
-                        matched = true;
+                        tagMatched = true;
                     }
                 }
-                if (matched == false) {
+                if (tagMatched == false) {
                     let tag = await createBlock(string7, configUID, 0);
                     await createBlock(string8, tag, 0);
+                }
+                var mdMatched = false;
+                for (var i = 0; i < config.length; i++) {
+                    if (config[i].string == string9) { // find tag in config if present
+                        mdMatched = true;
+                    }
+                }
+                if (mdMatched == false) {
+                    let md = await createBlock(string9, configUID, 1);
+                    await createBlock(string10, md, 0);
                 }
             } else { // create tag config
                 let tag = await createBlock(string7, configUID, 0);
@@ -70,6 +84,8 @@ async function checkFirstRun() {
             let config = await createBlock(string6, page[0][0].uid, 4);
             let tag = await createBlock(string7, config, 0);
             await createBlock(string8, tag, 0);
+            let md = await createBlock(string9, config, 1);
+            await createBlock(string10, md, 0);
         }
     }
 }
