@@ -8,21 +8,21 @@ let string7 = "Tag to apply to notes:";
 let string8 = "capture";
 let string9 = "Show Markdown toolbar for text notes: (true|false)";
 let string10 = "true";
-let string11 = "Apply OCR text and caption to image as nested child block: (true|false)";
-let string12 = "false";
+// let string11 = "Apply OCR text and caption to image as nested child block: (true|false)";
+// let string12 = "false";
 
 export default {
     onload: ({ extensionAPI }) => {
         checkFirstRun();
-        checkForMedia();
+        // checkForMedia();
 
-        try { if (checkForMediaInterval > 0) clearInterval(checkForMediaInterval) } catch (e) { }
+        /* try { if (checkForMediaInterval > 0) clearInterval(checkForMediaInterval) } catch (e) { }
         checkForMediaInterval = setInterval(async () => {
             await checkForMedia()
-        }, 1800000);
+        }, 1800000); */
     },
     onunload: () => {
-        clearInterval(checkForMediaInterval);
+        // clearInterval(checkForMediaInterval);
     }
 }
 
@@ -85,6 +85,7 @@ async function checkFirstRun() {
                     let md = await createBlock(string9, configUID, 1);
                     await createBlock(string10, md, 0);
                 }
+                /*
                 var imageChildMatched = false;
                 for (var i = 0; i < config.length; i++) {
                     if (config[i].string == string11) { // find markdownToolbar in config if present
@@ -95,6 +96,7 @@ async function checkFirstRun() {
                     // let ic = await createBlock(string11, configUID, 2);
                     // await createBlock(string12, ic, 0);
                 }
+                */
             } else { // create tag config
                 let tag = await createBlock(string7, configUID, 0);
                 await createBlock(string8, tag, 0);
@@ -115,6 +117,7 @@ async function checkFirstRun() {
     }
 }
 
+/*
 async function checkForMedia() {
     let mediaBlocks = window.roamAlphaAPI.data.q(
         `[:find (pull ?block [:block/uid :block/string]) :where [?block :block/string ?contents] [(clojure.string/includes? ?contents "https://res.cloudinary.com/capturerr")]]`
@@ -145,6 +148,7 @@ async function checkForMedia() {
         }
     }
 }
+*/
 
 async function createBlock(string, uid, order) {
     let newUid = roamAlphaAPI.util.generateUID();
